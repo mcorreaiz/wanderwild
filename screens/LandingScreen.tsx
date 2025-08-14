@@ -2,13 +2,13 @@ import { Link } from 'expo-router';
 import React from 'react';
 import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const backgroundImg = require('../assets/images/background.jpg');
+const backgroundImg = require('../assets/images/wanderwild-landing.jpg');
 
 const LandingScreen: React.FC = () => {
   return (
     <ImageBackground source={backgroundImg} style={styles.bg}>
       <View style={styles.buttonContainer}>
-        <Link href="selection" asChild={true}>
+        <Link href="/selection" asChild={true}>
             <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>PLAN MY WEEKEND</Text>
             </TouchableOpacity>

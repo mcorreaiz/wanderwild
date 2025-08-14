@@ -55,6 +55,7 @@
     "@types/react-native-maps": "^0.24.1",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~9.2.0",
+    "@react-native-community/cli": "latest",
     "typescript": "~5.8.3"
   },
   "private": true

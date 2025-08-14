@@ -39,7 +39,7 @@ const SelectionScreen: React.FC = () => {
       />
 
       <View style={styles.buttonContainer}>
-        <Link href="options" asChild={true}>
+        <Link href="/options" asChild={true}>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>LET'S GO WILD</Text>
           </TouchableOpacity>
