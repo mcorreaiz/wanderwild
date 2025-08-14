@@ -1,17 +1,24 @@
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function BulletSelection({ options, selected, onSelect }) {
+export interface BulletSelectionProps {
+  options: string[];
+  selected: string[];
+  onSelect: (option: string) => void;
+}
+
+const BulletSelection: React.FC<BulletSelectionProps> = ({ options, selected, onSelect }) => {
   return (
     <View style={styles.container}>
       {options.map(opt => (
         <TouchableOpacity key={opt} style={styles.row} onPress={() => onSelect(opt)}>
-          <View style={[styles.bullet, selected === opt && styles.selectedBullet]} />
+          <View style={[styles.bullet, selected.includes(opt) && styles.selectedBullet]} />
           <Text style={styles.text}>{opt}</Text>
         </TouchableOpacity>
       ))}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: { marginVertical: 12 },
@@ -30,3 +37,5 @@ const styles = StyleSheet.create({
   },
   text: { fontSize: 16 },
 });
+
+export default BulletSelection;

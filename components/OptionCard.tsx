@@ -1,6 +1,12 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Image, ImageSourcePropType, StyleSheet, Text, View } from 'react-native';
 
-export default function OptionCard({ image, text }) {
+export interface OptionCardProps {
+  image: ImageSourcePropType;
+  text: string;
+}
+
+const OptionCard: React.FC<OptionCardProps> = ({ image, text }) => {
   return (
     <View style={styles.card}>
       <Image source={image} style={styles.image} />
@@ -9,7 +15,7 @@ export default function OptionCard({ image, text }) {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   card: {
@@ -31,3 +37,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default OptionCard;

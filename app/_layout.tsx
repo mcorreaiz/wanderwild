@@ -1,5 +1,11 @@
-import LandingScreen from '../screens/LandingScreen';
+import { Stack } from 'expo-router';
 
 export default function RootLayout() {
-  return <LandingScreen />;
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="index" />
+      <Stack.Screen name="selection" />
+      <Stack.Screen name="options" />
+    </Stack>
+  );
 }

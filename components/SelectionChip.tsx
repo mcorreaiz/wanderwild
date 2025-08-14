@@ -1,6 +1,13 @@
+import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-export default function SelectionChip({ label, selected, onPress }) {
+export interface SelectionChipProps {
+  label: string;
+  selected: boolean;
+  onPress: () => void;
+}
+
+const SelectionChip: React.FC<SelectionChipProps> = ({ label, selected, onPress }) => {
   return (
     <TouchableOpacity
       style={[styles.chip, selected && styles.selected]}
@@ -9,7 +16,7 @@ export default function SelectionChip({ label, selected, onPress }) {
       <Text style={[styles.text, selected && styles.selectedText]}>{label}</Text>
     </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   chip: {
@@ -30,3 +37,5 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
 });
+
+export default SelectionChip;

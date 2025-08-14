@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { Link } from 'expo-router';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import BulletSelection from '../components/BulletSelection';
 import SelectionChip from '../components/SelectionChip';
 
-export default function SelectionScreen({ navigation }) {
-  const [duration, setDuration] = useState('2 hrs');
-  const [type, setType] = useState('car');
-  const [activity, setActivity] = useState('golf');
+const SelectionScreen: React.FC = () => {
+  const [duration, setDuration] = useState<string>('2 hrs');
+  const [type, setType] = useState<string>('car');
+  const [activities, setActivities] = useState<string[]>(['golf']);
 
   return (
     <View style={styles.container}>
@@ -26,19 +27,27 @@ export default function SelectionScreen({ navigation }) {
 
       <Text style={styles.label}>Activity</Text>
       <BulletSelection
-        options={['golf', 'fishing', 'hiking', 'lake', 'hunting', 'shellfishing']}
-        selected={activity}
-        onSelect={setActivity}
+        options={["golf", "fishing", "hiking", "lake", "hunting", "shellfishing"]}
+        selected={activities}
+        onSelect={(option: string) => {
+          setActivities(prev =>
+            prev.includes(option)
+              ? prev.filter(a => a !== option)
+              : [...prev, option]
+          );
+        }}
       />
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Options')}>
-          <Text style={styles.buttonText}>LET'S GO WILD</Text>
-        </TouchableOpacity>
+        <Link href="options" asChild={true}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>LET'S GO WILD</Text>
+          </TouchableOpacity>
+        </Link>
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 24, backgroundColor: '#fff' },
@@ -48,3 +57,5 @@ const styles = StyleSheet.create({
   button: { backgroundColor: '#2e7d32', padding: 18, borderRadius: 30, alignItems: 'center' },
   buttonText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
 });
+
+export default SelectionScreen;

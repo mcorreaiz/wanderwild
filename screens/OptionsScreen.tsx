@@ -1,13 +1,14 @@
+import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import OptionCard from '../components/OptionCard';
 
 const options = [
-  { image: require('../assets/card1.jpg'), text: 'Golf at Pine Valley' },
-  { image: require('../assets/card2.jpg'), text: 'Fishing at Lakeview' },
+  { image: require('../assets/images/golf.jpg'), text: 'Golf at Pine Valley' },
+  { image: require('../assets/images/rainier.jpg'), text: 'Fishing at Lakeview' },
   // Add more cards as needed
 ];
 
-export default function OptionsScreen() {
+const OptionsScreen: React.FC = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {options.map((opt, idx) => (
@@ -15,8 +16,10 @@ export default function OptionsScreen() {
       ))}
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: { padding: 16 },
 });
+
+export default OptionsScreen;

@@ -1,21 +1,22 @@
-import { useRouter } from 'expo-router';
+import { Link } from 'expo-router';
 import React from 'react';
-
 import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function LandingScreen() {
+const backgroundImg = require('../assets/images/background.jpg');
 
-  const router = useRouter();
+const LandingScreen: React.FC = () => {
   return (
-    <ImageBackground source={require('../assets/images/background.jpg')} style={styles.bg}>
+    <ImageBackground source={backgroundImg} style={styles.bg}>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => router.navigate('Selection')}>
-          <Text style={styles.buttonText}>PLAN MY WEEKEND</Text>
-        </TouchableOpacity>
+        <Link href="selection" asChild={true}>
+            <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>PLAN MY WEEKEND</Text>
+            </TouchableOpacity>
+        </Link>
       </View>
     </ImageBackground>
   );
-}
+};
 
 const styles = StyleSheet.create({
   bg: { flex: 1, justifyContent: 'flex-end' },
@@ -23,3 +24,5 @@ const styles = StyleSheet.create({
   button: { backgroundColor: '#2e7d32', padding: 18, borderRadius: 30, alignItems: 'center' },
   buttonText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
 });
+
+export default LandingScreen;
