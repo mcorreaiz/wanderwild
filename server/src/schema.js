@@ -59,7 +59,25 @@ const typeDefs = gql`
   type Query {
     campsites(CampsiteID: ID): [Campsite!]!
   }
+
+  type Favorite {
+    locationId: String!
+    locationType: String!
+    addedAt: String!
+  }
+
+  type Mutation {
+    addFavorite(userId: ID!, locationId: String!, locationType: String!): [Favorite!]!
+    removeFavorite(userId: ID!, locationId: String!): [Favorite!]!
+  }
+
+  type Query {
+    campsites(CampsiteID: ID): [Campsite!]!
+    favorites(userId: ID!): [Favorite!]!
+  }
 `;
+
+const User = require('./models/User');
 
 const resolvers = {
   Query: {
@@ -69,6 +87,27 @@ const resolvers = {
         return campsite ? [campsite] : [];
       }
       return await Campsite.find();
+    },
+    favorites: async (_, { userId }) => {
+      const user = await User.findById(userId);
+      if (!user) throw new Error('User not found');
+      return user.favorites;
+    },
+  },
+  Mutation: {
+    addFavorite: async (_, { userId, locationId, locationType }) => {
+      const user = await User.findById(userId);
+      if (!user) throw new Error('User not found');
+      user.favorites.push({ locationId, locationType });
+      await user.save();
+      return user.favorites;
+    },
+    removeFavorite: async (_, { userId, locationId }) => {
+      const user = await User.findById(userId);
+      if (!user) throw new Error('User not found');
+      user.favorites = user.favorites.filter(fav => fav.locationId !== locationId);
+      await user.save();
+      return user.favorites;
     },
   },
 };
