@@ -1,5 +1,6 @@
+import { Link } from 'expo-router';
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import OptionCard from '../components/OptionCard';
 
 const options = [
@@ -10,16 +11,35 @@ const options = [
 
 const OptionsScreen: React.FC = () => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {options.map((opt, idx) => (
-        <OptionCard key={idx} image={opt.image} text={opt.text} />
-      ))}
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView>
+        {options.map((opt, idx) => (
+          <OptionCard key={idx} image={opt.image} text={opt.text} />
+        ))}
+      </ScrollView>
+      <Link href="/map" asChild>
+        <TouchableOpacity style={styles.mapButton}>
+          <Text style={styles.mapButtonText}>View Campsites on Map</Text>
+        </TouchableOpacity>
+      </Link>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 16 },
+  container: { flex: 1, padding: 16 },
+  mapButton: {
+    backgroundColor: '#2e7d32',
+    padding: 16,
+    borderRadius: 30,
+    alignItems: 'center',
+    marginTop: 16,
+  },
+  mapButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
 });
 
 export default OptionsScreen;
