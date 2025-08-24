@@ -1,29 +1,74 @@
 const { gql } = require('apollo-server-express');
-const User = require('./models/User');
+const Facility = require('./models/Facility');
+const Campsite = require('./models/Campsite');
+const Organization = require('./models/Organization');
+const Event = require('./models/Event');
 
 const typeDefs = gql`
-  type User {
-    id: ID!
-    name: String!
-    email: String!
+  type Facility {
+    FacilityID: ID!
+    FacilityName: String
+    FacilityType: String
+    FacilityDescription: String
+    FacilityDirections: String
+    FacilityEmail: String
+    FacilityPhone: String
+    FacilityMapURL: String
+    FacilityLatitude: Float
+    FacilityLongitude: Float
+    FacilityURL: String
+    OrgID: Int
+    GEOJSON: String
+    LastUpdatedDate: String
   }
+
+  type Campsite {
+    CampsiteID: ID!
+    CampsiteName: String
+    CampsiteType: String
+    CampsiteAccessible: Boolean
+    CampsiteLongitude: Float
+    CampsiteLatitude: Float
+    CampsiteReservable: Boolean
+    FacilityID: Int
+    LastUpdatedDate: String
+  }
+
+  type Organization {
+    OrgID: ID!
+    OrgName: String
+    OrgAbbrevName: String
+    OrgDescription: String
+    OrgURL: String
+    OrgType: String
+    LastUpdatedDate: String
+  }
+
+  type Event {
+    EventID: ID!
+    EventName: String
+    EventType: String
+    EventDescription: String
+    EventStartDate: String
+    EventEndDate: String
+    FacilityID: Int
+    OrgID: Int
+    LastUpdatedDate: String
+  }
+
   type Query {
-    users: [User!]!
-  }
-  type Mutation {
-    addUser(name: String!, email: String!): User!
+    campsites(CampsiteID: ID): [Campsite!]!
   }
 `;
 
 const resolvers = {
   Query: {
-    users: async () => await User.find(),
-  },
-  Mutation: {
-    addUser: async (_, { name, email }) => {
-      const user = new User({ name, email });
-      await user.save();
-      return user;
+    campsites: async (_, { CampsiteID }) => {
+      if (CampsiteID) {
+        const campsite = await Campsite.findOne({ CampsiteID: CampsiteID });
+        return campsite ? [campsite] : [];
+      }
+      return await Campsite.find();
     },
   },
 };
