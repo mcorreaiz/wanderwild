@@ -1,7 +1,7 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql } from '@apollo/client';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { StyleSheet, View } from 'react-native';
+import MapView from 'react-native-maps';
 
 const GET_CAMPSITES = gql`
   query GetCampsites {
@@ -15,23 +15,23 @@ const GET_CAMPSITES = gql`
 `;
 
 const MapScreen: React.FC = () => {
-  const { data, loading, error } = useQuery(GET_CAMPSITES);
+  // const { data, loading, error } = useQuery(GET_CAMPSITES);
 
-  if (loading) return <View style={styles.container}><Text>Loading...</Text></View>;
-  if (error) return <View style={styles.container}><Text>Error loading campsites</Text></View>;
+  // if (loading) return <View style={styles.container}><Text>Loading...</Text></View>;
+  // if (error) return <View style={styles.container}><Text>Error loading campsites</Text></View>;
 
   return (
     <View style={styles.container}>
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: 37.0902,
-          longitude: -95.7129,
+          latitude: 47.6061,
+          longitude: -122.3328,
           latitudeDelta: 10,
           longitudeDelta: 10,
         }}
       >
-        {data.campsites.map((site: any) => (
+        {/* {data.campsites.map((site: any) => (
           <Marker
             key={site.CampsiteID}
             coordinate={{
@@ -40,7 +40,7 @@ const MapScreen: React.FC = () => {
             }}
             title={site.CampsiteName}
           />
-        ))}
+        ))} */}
       </MapView>
     </View>
   );

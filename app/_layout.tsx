@@ -9,6 +9,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" />
         <Stack.Screen name="selection" />
         <Stack.Screen name="options" />
+        <Stack.Screen name="map" />
       </Stack>
     </ApolloProvider>
   );
