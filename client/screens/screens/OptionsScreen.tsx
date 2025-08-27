@@ -1,11 +1,11 @@
 import { Link } from 'expo-router';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import OptionCard from '../components/OptionCard';
+import OptionCard from '../../components/components/OptionCard';
 
 const options = [
-  { image: require('../assets/images/golf.jpg'), text: 'Golf at Pine Valley' },
-  { image: require('../assets/images/rainier.jpg'), text: 'Fishing at Lakeview' },
+  { image: require('../../assets/assets/images/golf.jpg'), text: 'Golf at Pine Valley' },
+  { image: require('../../assets/assets/images/rainier.jpg'), text: 'Fishing at Lakeview' },
   // Add more cards as needed
 ];
 

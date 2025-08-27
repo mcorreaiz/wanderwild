@@ -1,8 +1,8 @@
 import { Link } from 'expo-router';
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import BulletSelection from '../components/BulletSelection';
-import SelectionChip from '../components/SelectionChip';
+import BulletSelection from '../../components/components/BulletSelection';
+import SelectionChip from '../../components/components/SelectionChip';
 
 const SelectionScreen: React.FC = () => {
   const [duration, setDuration] = useState<string>('2 hrs');

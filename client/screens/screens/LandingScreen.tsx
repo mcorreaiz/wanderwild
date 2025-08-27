@@ -2,7 +2,7 @@ import { Link } from 'expo-router';
 import React from 'react';
 import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const backgroundImg = require('../assets/images/wanderwild-landing.png');
+const backgroundImg = require('../../assets/assets/images/wanderwild-landing.png');
 
 const LandingScreen: React.FC = () => {
   return (
