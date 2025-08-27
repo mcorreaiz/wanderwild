@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 
 const FacilitySchema = new mongoose.Schema({
-  FacilityID: { type: Number, required: true, unique: true },
-  FacilityName: String,
-  FacilityType: String,
-  FacilityDescription: String,
-  FacilityDirections: String,
-  FacilityEmail: String,
-  FacilityPhone: String,
-  FacilityMapURL: String,
-  FacilityLatitude: Number,
-  FacilityLongitude: Number,
-  FacilityURL: String,
-  OrgID: Number,
-  GEOJSON: Object,
-  LastUpdatedDate: Date,
+  facility_id: { type: Number, required: true, unique: true },
+  facility_name: String,
+  facility_type: String,
+  facility_description: String,
+  facility_directions: String,
+  facility_email: String,
+  facility_phone: String,
+  facility_map_url: String,
+  facility_latitude: Number,
+  facility_longitude: Number,
+  facility_url: String,
+  org_id: Number,
+  geojson: Object,
+  last_updated_date: Date,
 });
 
 module.exports = mongoose.model('Facility', FacilitySchema);

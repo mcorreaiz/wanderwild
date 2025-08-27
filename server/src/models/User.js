@@ -5,9 +5,9 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   googleId: { type: String },
   favorites: [{
-    locationId: { type: String, required: true }, // Can be FacilityID or CampsiteID
-    locationType: { type: String, enum: ['Facility', 'Campsite'], required: true },
-    addedAt: { type: Date, default: Date.now }
+    location_id: { type: String, required: true }, // Can be FacilityID or CampsiteID
+    location_type: { type: String, enum: ['Facility', 'Campsite'], required: true },
+    added_at: { type: Date, default: Date.now }
   }],
 });
 

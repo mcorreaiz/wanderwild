@@ -6,10 +6,10 @@ import MapView from 'react-native-maps';
 const GET_CAMPSITES = gql`
   query GetCampsites {
     campsites {
-      CampsiteID
-      CampsiteName
-      CampsiteLatitude
-      CampsiteLongitude
+      campsite_id
+      campsite_name
+      campsite_latitude
+      campsite_longitude
     }
   }
 `;
@@ -33,12 +33,12 @@ const MapScreen: React.FC = () => {
       >
         {/* {data.campsites.map((site: any) => (
           <Marker
-            key={site.CampsiteID}
+            key={site.campsite_id}
             coordinate={{
-              latitude: site.CampsiteLatitude,
-              longitude: site.CampsiteLongitude,
+              latitude: site.campsite_latitude,
+              longitude: site.campsite_longitude,
             }}
-            title={site.CampsiteName}
+            title={site.campsite_name}
           />
         ))} */}
       </MapView>

@@ -6,110 +6,110 @@ const Event = require('./models/Event');
 
 const typeDefs = gql`
   type Facility {
-    FacilityID: ID!
-    FacilityName: String
-    FacilityType: String
-    FacilityDescription: String
-    FacilityDirections: String
-    FacilityEmail: String
-    FacilityPhone: String
-    FacilityMapURL: String
-    FacilityLatitude: Float
-    FacilityLongitude: Float
-    FacilityURL: String
-    OrgID: Int
-    GEOJSON: String
-    LastUpdatedDate: String
+    facility_id: ID!
+    facility_name: String
+    facility_type: String
+    facility_description: String
+    facility_directions: String
+    facility_email: String
+    facility_phone: String
+    facility_map_url: String
+    facility_latitude: Float
+    facility_longitude: Float
+    facility_url: String
+    org_id: Int
+    geojson: String
+    last_updated_date: String
   }
 
   type Campsite {
-    CampsiteID: ID!
-    CampsiteName: String
-    CampsiteType: String
-    CampsiteAccessible: Boolean
-    CampsiteLongitude: Float
-    CampsiteLatitude: Float
-    CampsiteReservable: Boolean
-    FacilityID: Int
-    LastUpdatedDate: String
+    campsite_id: ID!
+    campsite_name: String
+    campsite_type: String
+    campsite_accessible: Boolean
+    campsite_longitude: Float
+    campsite_latitude: Float
+    campsite_reservable: Boolean
+    facility_id: Int
+    last_updated_date: String
   }
 
   type Organization {
-    OrgID: ID!
-    OrgName: String
-    OrgAbbrevName: String
-    OrgDescription: String
-    OrgURL: String
-    OrgType: String
-    LastUpdatedDate: String
+    org_id: ID!
+    org_name: String
+    org_abbrev_name: String
+    org_description: String
+    org_url: String
+    org_type: String
+    last_updated_date: String
   }
 
   type Event {
-    EventID: ID!
-    EventName: String
-    EventType: String
-    EventDescription: String
-    EventStartDate: String
-    EventEndDate: String
-    FacilityID: Int
-    OrgID: Int
-    LastUpdatedDate: String
+    event_id: ID!
+    event_name: String
+    event_type: String
+    event_description: String
+    event_start_date: String
+    event_end_date: String
+    facility_id: Int
+    org_id: Int
+    last_updated_date: String
   }
 
   type RecreationArea {
-    RecreationAreaID: ID!
-    RecreationAreaName: String
-    RecreationAreaDescription: String
-    RecreationAreaDirections: String
-    RecreationAreaLatitude: Float
-    RecreationAreaLongitude: Float
-    RecreationAreaPhone: String
-    RecreationAreaEmail: String
-    RecreationAreaMapURL: String
-    LastUpdatedDate: String
+    recreation_area_id: ID!
+    recreation_area_name: String
+    recreation_area_description: String
+    recreation_area_directions: String
+    recreation_area_latitude: Float
+    recreation_area_longitude: Float
+    recreation_area_phone: String
+    recreation_area_email: String
+    recreation_area_map_url: String
+    last_updated_date: String
   }
 
   type Permit {
-    PermitID: ID!
-    PermitName: String
-    PermitType: String
-    PermitDescription: String
-    PermitEntranceIDs: [Int]
-    FacilityID: Int
-    LastUpdatedDate: String
+    permit_id: ID!
+    permit_name: String
+    permit_type: String
+    permit_description: String
+    permit_entrance_ids: [Int]
+    facility_id: Int
+    last_updated_date: String
   }
 
   type PermitEntrance {
-    PermitEntranceID: ID!
-    PermitEntranceName: String
-    PermitEntranceDescription: String
-    FacilityID: Int
-    LastUpdatedDate: String
+    permit_entrance_id: ID!
+    permit_entrance_name: String
+    permit_entrance_description: String
+    facility_id: Int
+    last_updated_date: String
   }
 
   type Link {
-    EntityID: Int
-    EntityType: String
-    LinkType: String
-    URL: String
-    Description: String
-    LastUpdatedDate: String
+    entity_id: Int
+    entity_type: String
+    link_type: String
+    url: String
+    description: String
+    last_updated_date: String
   }
 
   type Media {
-    EntityID: Int
-    EntityType: String
-    MediaType: String
-    URL: String
-    Description: String
-    LastUpdatedDate: String
+    entity_id: Int
+    entity_type: String
+    media_type: String
+    url: String
+    description: String
+    last_updated_date: String
   }
 
   type Activity {
-    ActivityID: ID!
-    ActivityName: String
-    ActivityDescription: String
-    LastUpdatedDate: String
+    activity_id: ID!
+    activity_name: String
+    activity_description: String
+    last_updated_date: String
   }
 
   type Query {
@@ -127,9 +127,9 @@ const typeDefs = gql`
   }
 
   type Favorite {
-    locationId: String!
-    locationType: String!
-    addedAt: String!
+    location_id: String!
+    location_type: String!
+    added_at: String!
   }
 
   type Mutation {
