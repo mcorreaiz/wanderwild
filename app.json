@@ -2,9 +2,10 @@
   "expo": {
     "name": "wanderwild",
     "slug": "wanderwild",
+    "entryPoint": "./client/app/index.tsx",
     "version": "1.0.0",
     "orientation": "portrait",
-  "icon": "./client/assets/assets/images/icon.png",
+    "icon": "./client/assets/assets/images/icon.png",
     "scheme": "wanderwild",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,

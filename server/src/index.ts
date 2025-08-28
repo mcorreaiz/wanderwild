@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import mongoose from 'mongoose';
-import { resolvers, typeDefs } from 'schema';
+import { resolvers, typeDefs } from './schema';
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/wanderwild';
 

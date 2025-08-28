@@ -13,7 +13,10 @@ export interface IFacility extends Document {
   facility_longitude?: number;
   facility_url?: string;
   org_id?: number;
-  geojson?: string;
+  geojson?: {
+    coordinates: [number, number];
+    type: string;
+  };
   last_updated_date?: string;
 }
 
@@ -30,7 +33,16 @@ const FacilitySchema = new Schema<IFacility>({
   facility_longitude: Number,
   facility_url: String,
   org_id: Number,
-  geojson: String,
+  geojson: {
+    type: {
+      type: String,
+      required: false,
+    },
+    coordinates: {
+      type: [Number],
+      required: false,
+    },
+  },
   last_updated_date: String,
 });
 
