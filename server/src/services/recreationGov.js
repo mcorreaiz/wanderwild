@@ -1,8 +1,7 @@
 const axios = require('axios');
 
 const BASE_URL = 'https://ridb.recreation.gov/api/v1';
-const API_KEY = process.env.RECREATION_GOV_API_KEY; // Set your API key in environment variables
-
+const API_KEY = process.env.RECREATION_GOV_API_KEY || "b9a178d6-847c-4327-8a4b-2d3c693db647"
 const defaultHeaders = {
   apikey: API_KEY,
 };
